@@ -1,6 +1,7 @@
 import React from 'react'
 //import PasswordInput from './PasswordInput'
-import QuestionList from './QuestionList'
+import QuestionSection from './QuestionSection'
+import QuestionContainer from './QuestionContainer'
 
 export default class App extends React.Component {
 
@@ -31,10 +32,11 @@ export default class App extends React.Component {
           <h2>Recent Asked Questions</h2>
           <a href="">Ask A Question</a>
         </div>
-        <div>
-            <QuestionList />
+        
+            {/* <QuestionContainer /> */}
+            <QuestionSection />
             
-        </div>
+        
     </div>
     );
   };
