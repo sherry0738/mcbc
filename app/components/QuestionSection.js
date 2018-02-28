@@ -29,9 +29,9 @@ export default class QuestionSection extends React.Component {
                             const answers = question.answers;
                             return (
                                 <div className={"question"}>
-                                    <h2 className="questionTitle">{question.title}
+                                    <h4 className="questionTitle">{question.title}
                                         <span className="">{question.answers.length + " answers"}</span>
-                                    </h2>
+                                    </h4>
                                     <p className="questionDescription">{question.description}</p>
                                     {
                                         answers.map(function(data, index){ 

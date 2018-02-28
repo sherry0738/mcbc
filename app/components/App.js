@@ -1,44 +1,36 @@
 import React from 'react'
-//import PasswordInput from './PasswordInput'
-import QuestionSection from './QuestionSection'
-import QuestionContainer from './QuestionContainer'
+import ReactDOM from 'react-dom';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
+import Test from './CardExampleWithAvatar'
 
 export default class App extends React.Component {
-
   constructor(props) {
     super(props)
-    this.state = { info: 'getting from express...',questions: 'getting from express...'  }
+    this.state = {
+      info: 'getting from express...',
+      questions: 'getting from express...',
+      // imageurl: "http://events.globallandscapesforum.org/wp-content/uploads/sites/2/2017/11/33239101020_d20d6905a9_z.jpg"
+    }
     
   }
 
-  //let hostedDomain = 'https://rocky-thicket-78112.herokuapp.com/details'
-  // fetch(hostedDomain, {
-  //   body: JSON.stringify({info: 'from client'}),
-  //   method: 'POST',
-  //   headers: {
-  //     'content-type': 'application/json'
-  //   }
-  // })
-
-
   render() {
-    //const info = this.state.info
-    
-    
     return (
       <div>
-        <h1>Support Group</h1>
+        <h2>Support Group</h2>
         <div>
-          <h2>Recent Asked Questions</h2>
-          <a href="">Ask A Question</a>
+          <h3>Recent Asked Questions</h3>
+          <a href="#">Ask a Question</a>
         </div>
-        
-            {/* <QuestionContainer /> */}
-            <QuestionSection />
-            
-        
+          <Test />
     </div>
     );
   };
 
 }
+
+
+
+
