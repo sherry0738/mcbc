@@ -1,36 +1,70 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-
-import Test from './CardExampleWithAvatar'
-
-export default class App extends React.Component {
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import QandAExpandable from './QandAExpandable'
+import AnswerTexter from './AnswerTexter'
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      info: 'getting from express...',
-      questions: 'getting from express...',
-      // imageurl: "http://events.globallandscapesforum.org/wp-content/uploads/sites/2/2017/11/33239101020_d20d6905a9_z.jpg"
+      context: ""
     }
-    
+  }
+
+  componentDidMount() {
+    let localHost = 'http://localhost:3000/details'
+    fetch(localHost)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ questions: res.questions })
+        console.log(res);
+    })
+      
   }
 
   render() {
-    return (
-      <div>
-        <h2>Support Group</h2>
-        <div>
+    const questions = this.state.questions;
+    const answerTexters = this.state.answerTexters 
+    
+    if (questions) {
+      return (
+        <MuiThemeProvider>
+          <div>
+          <h2>Support Group</h2>
           <h3>Recent Asked Questions</h3>
           <a href="#">Ask a Question</a>
-        </div>
-          <Test />
-    </div>
-    );
-  };
+          <AnswerTexter />
+        </div> 
+        {
+          questions.map(question => {
+            return(
+              <div>
+              <QandAExpandable cardTitleText={question.title} question={question} cardAnswers={question.answers}></QandAExpandable>
+            <br/>
+            </div>
+            )
+          })
+        }
+    </MuiThemeProvider>
+      );
+    } else {
+      return <div>loading...</div>
+    }
+
+  }
 
 }
 
 
+export default App;
 
 
+
+// return <div>
+//      <AnswerTexter />
+//      {answerTexters.map(function(answerTexter, index) {
+//        return <p key={index}>{answerTexter}</p>
+//        })}
+//      {/* {answerTexters.map(answerTexter, index)} => <p key={index}>{answerTexter}</p> */}
+     
+//      </div>
