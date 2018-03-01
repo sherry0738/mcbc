@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import QandAExpandable from './QandAExpandable'
 import AnswerTexter from './AnswerTexter'
+import QueInput from './QueInput'
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      context: ""
+      content: ""
     }
   }
 
@@ -34,6 +35,7 @@ class App extends React.Component {
           <h3>Recent Asked Questions</h3>
           <a href="#">Ask a Question</a>
           <AnswerTexter />
+          <QueInput />
         </div> 
         {
           questions.map(question => {

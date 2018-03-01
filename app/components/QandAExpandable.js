@@ -18,7 +18,7 @@ class QandAExpandable extends React.Component {
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <CardActions>
+        <CardActions expandable={true}>
           <FlatButton label="Answer this question" />
         </CardActions>
       
@@ -27,6 +27,7 @@ class QandAExpandable extends React.Component {
           return (
             
           <CardText expandable={true} > {item.user}:{item.answer} </CardText> 
+
           )
         })}
       </Card>
