@@ -14,6 +14,8 @@ class QandAExpandable extends React.Component {
   }
   render() {
     return (
+      <div>
+      <h5>Recent Asked Questions</h5>
       <Card className="card_panel">
         <CardHeader
           title= {this.props.question.title} 
@@ -36,6 +38,7 @@ class QandAExpandable extends React.Component {
           })}
         <AnswerInput questionId={this.props.questionId} />
       </Card>
+      </div>
     );
   }
 }

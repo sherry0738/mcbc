@@ -75,10 +75,10 @@ export default class AnswerInput extends React.Component {
                     placeholder="answer this question here ..."                 
                     onChange={this.ansInputTextChange}></textarea>
                 <footer className="answerInput_footer">
-                    <span className={spanClass}>{charsLeft}</span>
+                    <span className={spanClass} className="answerInput_count">{charsLeft}</span>
                    
                     {/* <span className="answerInput_span--warning">{maxTextLength - answer.length}</span> */}
-                    <button onClick={this.handleAnswerClick} disabled={isDisabled}>Submit</button>
+                    <button onClick={this.handleAnswerClick} disabled={isDisabled} className="answerInput_save" >Submit</button>
                 </footer>
             </div>
         )

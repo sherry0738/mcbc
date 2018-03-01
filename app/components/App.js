@@ -31,11 +31,12 @@ class App extends React.Component {
       return (
         <MuiThemeProvider>
           <div>
-          <h4>Support Group</h4>
-          <h5>Recent Asked Questions</h5>
-
+          <h4>{"{mum coder} Support Group"}</h4>
           
+
+          <hr />
           <QueInput />
+          <hr />
         </div> 
         {
           questions.map(question => {

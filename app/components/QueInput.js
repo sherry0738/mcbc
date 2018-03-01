@@ -66,9 +66,11 @@ export default class QueInput extends React.Component {
   render() {
 
     return (
-      <form className="question-form">
+      <div>
+      <h5>Post your question here:</h5>
 
-        <h6>Post your question here:</h6>
+      <form className="question-form">
+      
         <TextField
           id=""
           label=""
@@ -78,6 +80,7 @@ export default class QueInput extends React.Component {
           onChange={this.titleTextChange}
           margin="normal"
         />
+        
         <TextField
           id="multiline-flexible"
           label="Multiline"
@@ -97,8 +100,10 @@ export default class QueInput extends React.Component {
           className="queInputEmail-textField"
           margin="normal"
         />
-        <button onClick={this.handleQuestionClick} >Save</button>
+        
+        <button onClick={this.handleQuestionClick} style={{flex:1 , marginRight:10}}>Save</button>
       </form>
+      </div>
     );
   }
 }
