@@ -1,0 +1,27 @@
+
+.answerInput {
+    width: 100%;
+}
+.ansInputEmail_textarea {
+    width: 25%;
+    height: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-left: 0.1rem;
+}
+
+.answerInput_textarea {
+    width: 95%;
+    height: 4drem;
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-left: 0.1rem;
+}
+
+.answerInput_footer {
+    display: flex;
+    justify-content: space-between;
+}
+.answerInput_span--warning {
+    color: red;
+}

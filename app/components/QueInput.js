@@ -3,55 +3,88 @@ import React from 'react';
 //import { withStyles } from 'material-ui/styles';
 //import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
+import './QueInput.scss'
 
 
 
 export default class QueInput extends React.Component {
 
-      constructor(props) {
-          super(props)
-          this.titleTextChange = this.titleTextChange.bind(this)
-          this.emailForQIChange = this.emailForQIChange.bind(this)
-          this.desTextChange = this.desTextChange.bind(this)
-          this.state = {
-            queTitle: '',
-            emailForQueInput: '',
-            queDescription: ''
-            
-          }
-      }
+  constructor(props) {
+    super(props)
+    this.titleTextChange = this.titleTextChange.bind(this)
+    this.emailForQIChange = this.emailForQIChange.bind(this)
+    this.desTextChange = this.desTextChange.bind(this)
+    this.state = {
+      queTitle: '',
+      emailForQueInput: '',
+      queDescription: ''
 
-titleTextChange(event) {
-  this.setState({
-      queTitle: event.target.value
-  })
-  console.log(this.state.queTitle)
-}
-emailForQIChange(event) {
-  this.setState({
-      emailForQueInput: event.target.value
-  })
-  console.log(this.state.emailForQueInput)
-}
+    }
+    this.handleQuestionClick = this.handleQuestionClick.bind(this)
+  }
+  handleQuestionClick(event) {
 
-desTextChange(event) {
+    let serviceUrl = 'http://localhost:3000/question'
+    //let serviceUrl = 'http://ec2-13-211-164-23.ap-southeast-2.compute.amazonaws.com:3000/question'
+    fetch(serviceUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.emailForQueInput,
+        username: this.state.emailForQueInput,
+        title: this.state.queTitle,
+        description: this.state.queDescription
+      })
+    }).then(res => {
+
+      //console.log(res);
+    })
+  }
+  titleTextChange(event) {
     this.setState({
-        queDescription: event.target.value
+      queTitle: event.target.value
+    })
+    console.log(this.state.queTitle)
+  }
+  emailForQIChange(event) {
+    this.setState({
+      emailForQueInput: event.target.value
+    })
+    console.log(this.state.emailForQueInput)
+  }
+
+  desTextChange(event) {
+    this.setState({
+      queDescription: event.target.value
     })
     console.log(this.state.queDescription)
   }
 
   render() {
-  
+
     return (
-      <form>
+      <form className="question-form">
+
+        <h6>Post your question here:</h6>
         <TextField
           id=""
           label=""
           placeholder="Question Title"
-          className="queTitle-textArea"
+          className="queTitle-textField"
           value={this.state.queTitle}
           onChange={this.titleTextChange}
+          margin="normal"
+        />
+        <TextField
+          id="multiline-flexible"
+          label="Multiline"
+          placeholder="Question Descrition"
+          value={this.state.queDescription}
+          onChange={this.desTextChange}
+          className="queDescription-textField"
           margin="normal"
         />
         <TextField
@@ -61,26 +94,15 @@ desTextChange(event) {
           placeholder="email"
           defaultValue=""
           onChange={this.emailForQIChange}
-          className="queInput-emailArea"
+          className="queInputEmail-textField"
           margin="normal"
         />
-        <TextField
-          id="multiline-flexible"
-          label="Multiline"
-          placeholder="Question Descrition"
-          Question Description
-          rowsMax="4"
-          value={this.state.queDescription}
-          onChange={this.desTextChange}
-          className="queDescription-textArea"
-          margin="normal"
-        />
-        <button>Save</button>
-        </form>
-        );
+        <button onClick={this.handleQuestionClick} >Save</button>
+      </form>
+    );
   }
 }
-  
+
 //         QueInput.propTypes = {
 //           classes: PropTypes.object.isRequired,
 // };

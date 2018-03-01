@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import QandAExpandable from './QandAExpandable'
-import AnswerTexter from './AnswerTexter'
+
 import QueInput from './QueInput'
 class App extends React.Component {
   constructor(props) {
@@ -13,35 +13,35 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    let localHost = 'http://localhost:3000/details'
-    fetch(localHost)
+    let serviceUrl = 'http://localhost:3000/details'
+    //let serviceUrl = 'http://ec2-13-211-164-23.ap-southeast-2.compute.amazonaws.com:3000/details'
+    fetch(serviceUrl)
       .then(res => res.json())
       .then(res => {
         this.setState({ questions: res.questions })
         console.log(res);
-    })
-      
+    })   
   }
 
   render() {
     const questions = this.state.questions;
-    const answerTexters = this.state.answerTexters 
+    const answerInputs = this.state.answerInputs 
     
     if (questions) {
       return (
         <MuiThemeProvider>
           <div>
-          <h2>Support Group</h2>
-          <h3>Recent Asked Questions</h3>
-          <a href="#">Ask a Question</a>
-          <AnswerTexter />
+          <h4>Support Group</h4>
+          <h5>Recent Asked Questions</h5>
+
+          
           <QueInput />
         </div> 
         {
           questions.map(question => {
             return(
               <div>
-              <QandAExpandable cardTitleText={question.title} question={question} cardAnswers={question.answers}></QandAExpandable>
+              <QandAExpandable cardTitleText={question.title}  questionId={question.id} question={question} cardAnswers={question.answers}></QandAExpandable>
             <br/>
             </div>
             )
@@ -57,6 +57,17 @@ class App extends React.Component {
 
 }
 
+
+function mapStateToProps(state) {
+  console.info(state)
+  return {
+    meetups: state.meetups,
+    meetup: state.meetup,
+    route: state.route,
+    session: state.session,
+    isFetching: state.isFetching
+  }
+}
 
 export default App;
 
