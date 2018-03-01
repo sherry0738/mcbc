@@ -78,6 +78,7 @@ export default class QueInput extends React.Component {
           className="queTitle-textField"
           value={this.state.queTitle}
           onChange={this.titleTextChange}
+         
           margin="normal"
         />
         
@@ -101,7 +102,7 @@ export default class QueInput extends React.Component {
           margin="normal"
         />
         
-        <button onClick={this.handleQuestionClick} style={{flex:1 , marginRight:10}}>Save</button>
+        <button onClick={this.handleQuestionClick} style={{width:50 ,marginRight:5}}>Save</button>
       </form>
       </div>
     );
